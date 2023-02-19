@@ -3,8 +3,26 @@ require_once('./includes/functions.inc.php');
 //db_connect();
 // echo "Connected!"
 // $rows=db_select("SELECT * FROM contacts WHERE first_name like '%P%'");
-$rows=db_select("SELECT * FROM contacts");
+//$rows=db_select("SELECT * FROM contacts");
+define('ROWS_PER_PAGE',6);  //define() in PHP is used to define constant
 // dd($rows);
+
+
+$rows=db_select("SELECT COUNT(*) AS total_count FROM contacts");
+
+// dd($rows);
+$total_num_of_contacts=$rows[0]['total_count'];
+$num_of_pages=ceil($total_num_of_contacts/ROWS_PER_PAGE);
+$current_page=isset($_GET['page'])?$_GET['page']:1;
+
+if($current_page<1 || $current_page>$num_of_pages){
+    die("404 NOT FOUND");
+}
+
+$offset=($current_page-1)* ROWS_PER_PAGE;
+$rows_per_page=ROWS_PER_PAGE;
+
+$rows=db_select("SELECT * FROM contacts LIMIT $offset,$rows_per_page");
 if($rows==false){
     dd(db_error());
 }
@@ -53,9 +71,8 @@ if($rows==false){
     <!-- Add a New Contact Link-->
     <div class="row mt50">
         <div class="col s12 right-align">
-            <a class="btn waves-effect waves-light blue lighten-2" href="add-contact.html"><i
-                    class="material-icons left">add</i> Add
-                New</a>
+            <a class="btn waves-effect waves-light blue lighten-2" href="add-contact.php"><i
+                    class="material-icons left">add</i> Add New</a>
         </div>
     </div>
     <!-- /Add a New Contact Link-->
@@ -82,7 +99,7 @@ if($rows==false){
                     foreach($rows as $row):
                     ?>
                     <tr>
-                        <td><img class="circle" src="images/users/<?=$row['image_name'];?>" alt="" height="60%"></td>
+                        <td><img class="circle" src="images/users/<?=get_image_name($row['image_name'],$row['id'])?>" alt="" height="60%"></td>
                         <td><?= $row['first_name']." ".$row['last_name'];?></td>
                         <td><?= $row['email'];?></td>
                         <td><?=$row['birthdate'];?></td>
@@ -105,13 +122,36 @@ if($rows==false){
     <div class="row">
         <div class="col s12">
             <ul class="pagination">
-                <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                <li class="active"><a href="#!">1</a></li>
-                <li class="waves-effect"><a href="#!">2</a></li>
+                <?php
+                    if($current_page<=$num_of_pages){
+                        $prevpage=$current_page-1;
+                        $styles=$prevpage<=1?"disabled": "waves-effect";
+                    }else{
+                        $prevpage=1;
+                    }
+                    $styles=$prevpage<=1?"disabled": "waves-effect";
+                ?>
+                <li class="<?=$styles?>"><a href=""><i class="material-icons">chevron_left</i></a></li>
+                <?php   
+                    for($i=1;$i<=$num_of_pages;$i++):
+                        $styles=$i==$current_page?"active waves-effect": "waves-effect";
+                ?>
+                <li class="<?=$styles;?>"><a href="?page=<?=$i;?>"><?=$i;?></a></li>
+                <?php
+                    endfor;
+                    if($current_page<$num_of_pages){
+                        $nextpage=$current_page+1;
+                    }else{
+                        $nextpage=1;
+                    }
+                     $styles=$current_page==$num_of_pages?"disabled": "waves-effect";
+                ?>
+                <!-- <li class="waves-effect"><a href="#!">2</a></li>
                 <li class="waves-effect"><a href="#!">3</a></li>
                 <li class="waves-effect"><a href="#!">4</a></li>
-                <li class="waves-effect"><a href="#!">5</a></li>
-                <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                <li class="waves-effect"><a href="#!">5</a></li> -->
+                <li class="<?=$styles?>"><a href="?page=<?=$nextpage;?>"><i class="material-icons">chevron_right</i></a></li>
+                
             </ul>
         </div>
     </div>
