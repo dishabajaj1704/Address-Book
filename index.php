@@ -125,13 +125,12 @@ if($rows==false){
                 <?php
                     if($current_page<=$num_of_pages){
                         $prevpage=$current_page-1;
-                        $styles=$prevpage<=1?"disabled": "waves-effect";
                     }else{
                         $prevpage=1;
                     }
-                    $styles=$prevpage<=1?"disabled": "waves-effect";
+                    $styles=$current_page<=1?"disabled": "waves-effect";
                 ?>
-                <li class="<?=$styles?>"><a href=""><i class="material-icons">chevron_left</i></a></li>
+                <li class="<?=$styles?>"><a href="?page=<?=$prevpage;?>"><i class="material-icons">chevron_left</i></a></li>
                 <?php   
                     for($i=1;$i<=$num_of_pages;$i++):
                         $styles=$i==$current_page?"active waves-effect": "waves-effect";
