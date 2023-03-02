@@ -2583,10 +2583,12 @@ video.responsive-video {
     .pagination {
         width: 100%
     }
+
     .pagination li.prev,
     .pagination li.next {
         width: 10%
     }
+
     .pagination li.pages {
         width: 80%;
         overflow: hidden;
@@ -2677,6 +2679,7 @@ ul.staggered-list li {
 }
 
 @media only screen and (max-width: 600px) {
+
     .hide-on-small-only,
     .hide-on-small-and-down {
         display: none !important
@@ -2841,28 +2844,35 @@ th {
         display: block;
         position: relative
     }
+
     table.responsive-table td:empty:before {
         content: '\00a0'
     }
+
     table.responsive-table th,
     table.responsive-table td {
         margin: 0;
         vertical-align: top
     }
+
     table.responsive-table th {
         text-align: left
     }
+
     table.responsive-table thead {
         display: block;
         float: left
     }
+
     table.responsive-table thead tr {
         display: block;
         padding: 0 10px 0 0
     }
+
     table.responsive-table thead tr th::before {
         content: "\00a0"
     }
+
     table.responsive-table tbody {
         display: block;
         width: auto;
@@ -2870,23 +2880,28 @@ th {
         overflow-x: auto;
         white-space: nowrap
     }
+
     table.responsive-table tbody tr {
         display: inline-block;
         vertical-align: top
     }
+
     table.responsive-table th {
         display: block;
         text-align: right
     }
+
     table.responsive-table td {
         display: block;
         min-height: 1.25em;
         text-align: left
     }
+
     table.responsive-table tr {
         border-bottom: none;
         padding: 0 10px
     }
+
     table.responsive-table thead {
         border: 0;
         border-right: 1px solid rgba(0, 0, 0, 0.12)
@@ -3069,10 +3084,12 @@ th {
         left: -35%;
         right: 100%
     }
+
     60% {
         left: 100%;
         right: -90%
     }
+
     100% {
         left: 100%;
         right: -90%
@@ -3084,10 +3101,12 @@ th {
         left: -35%;
         right: 100%
     }
+
     60% {
         left: 100%;
         right: -90%
     }
+
     100% {
         left: 100%;
         right: -90%
@@ -3099,10 +3118,12 @@ th {
         left: -200%;
         right: 100%
     }
+
     60% {
         left: 107%;
         right: -8%
     }
+
     100% {
         left: 107%;
         right: -8%
@@ -3114,10 +3135,12 @@ th {
         left: -200%;
         right: 100%
     }
+
     60% {
         left: 107%;
         right: -8%
     }
+
     100% {
         left: 107%;
         right: -8%
@@ -3543,177 +3566,224 @@ table span.badge {
         left: auto;
         right: auto
     }
+
     .row .col.m2 {
         width: 16.6666666667%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.m3 {
         width: 25%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.m4 {
         width: 33.3333333333%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.m5 {
         width: 41.6666666667%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.m6 {
         width: 50%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.m7 {
         width: 58.3333333333%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.m8 {
         width: 66.6666666667%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.m9 {
         width: 75%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.m10 {
         width: 83.3333333333%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.m11 {
         width: 91.6666666667%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.m12 {
         width: 100%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.offset-m1 {
         margin-left: 8.3333333333%
     }
+
     .row .col.pull-m1 {
         right: 8.3333333333%
     }
+
     .row .col.push-m1 {
         left: 8.3333333333%
     }
+
     .row .col.offset-m2 {
         margin-left: 16.6666666667%
     }
+
     .row .col.pull-m2 {
         right: 16.6666666667%
     }
+
     .row .col.push-m2 {
         left: 16.6666666667%
     }
+
     .row .col.offset-m3 {
         margin-left: 25%
     }
+
     .row .col.pull-m3 {
         right: 25%
     }
+
     .row .col.push-m3 {
         left: 25%
     }
+
     .row .col.offset-m4 {
         margin-left: 33.3333333333%
     }
+
     .row .col.pull-m4 {
         right: 33.3333333333%
     }
+
     .row .col.push-m4 {
         left: 33.3333333333%
     }
+
     .row .col.offset-m5 {
         margin-left: 41.6666666667%
     }
+
     .row .col.pull-m5 {
         right: 41.6666666667%
     }
+
     .row .col.push-m5 {
         left: 41.6666666667%
     }
+
     .row .col.offset-m6 {
         margin-left: 50%
     }
+
     .row .col.pull-m6 {
         right: 50%
     }
+
     .row .col.push-m6 {
         left: 50%
     }
+
     .row .col.offset-m7 {
         margin-left: 58.3333333333%
     }
+
     .row .col.pull-m7 {
         right: 58.3333333333%
     }
+
     .row .col.push-m7 {
         left: 58.3333333333%
     }
+
     .row .col.offset-m8 {
         margin-left: 66.6666666667%
     }
+
     .row .col.pull-m8 {
         right: 66.6666666667%
     }
+
     .row .col.push-m8 {
         left: 66.6666666667%
     }
+
     .row .col.offset-m9 {
         margin-left: 75%
     }
+
     .row .col.pull-m9 {
         right: 75%
     }
+
     .row .col.push-m9 {
         left: 75%
     }
+
     .row .col.offset-m10 {
         margin-left: 83.3333333333%
     }
+
     .row .col.pull-m10 {
         right: 83.3333333333%
     }
+
     .row .col.push-m10 {
         left: 83.3333333333%
     }
+
     .row .col.offset-m11 {
         margin-left: 91.6666666667%
     }
+
     .row .col.pull-m11 {
         right: 91.6666666667%
     }
+
     .row .col.push-m11 {
         left: 91.6666666667%
     }
+
     .row .col.offset-m12 {
         margin-left: 100%
     }
+
     .row .col.pull-m12 {
         right: 100%
     }
+
     .row .col.push-m12 {
         left: 100%
     }
@@ -3726,177 +3796,224 @@ table span.badge {
         left: auto;
         right: auto
     }
+
     .row .col.l2 {
         width: 16.6666666667%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.l3 {
         width: 25%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.l4 {
         width: 33.3333333333%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.l5 {
         width: 41.6666666667%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.l6 {
         width: 50%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.l7 {
         width: 58.3333333333%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.l8 {
         width: 66.6666666667%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.l9 {
         width: 75%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.l10 {
         width: 83.3333333333%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.l11 {
         width: 91.6666666667%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.l12 {
         width: 100%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.offset-l1 {
         margin-left: 8.3333333333%
     }
+
     .row .col.pull-l1 {
         right: 8.3333333333%
     }
+
     .row .col.push-l1 {
         left: 8.3333333333%
     }
+
     .row .col.offset-l2 {
         margin-left: 16.6666666667%
     }
+
     .row .col.pull-l2 {
         right: 16.6666666667%
     }
+
     .row .col.push-l2 {
         left: 16.6666666667%
     }
+
     .row .col.offset-l3 {
         margin-left: 25%
     }
+
     .row .col.pull-l3 {
         right: 25%
     }
+
     .row .col.push-l3 {
         left: 25%
     }
+
     .row .col.offset-l4 {
         margin-left: 33.3333333333%
     }
+
     .row .col.pull-l4 {
         right: 33.3333333333%
     }
+
     .row .col.push-l4 {
         left: 33.3333333333%
     }
+
     .row .col.offset-l5 {
         margin-left: 41.6666666667%
     }
+
     .row .col.pull-l5 {
         right: 41.6666666667%
     }
+
     .row .col.push-l5 {
         left: 41.6666666667%
     }
+
     .row .col.offset-l6 {
         margin-left: 50%
     }
+
     .row .col.pull-l6 {
         right: 50%
     }
+
     .row .col.push-l6 {
         left: 50%
     }
+
     .row .col.offset-l7 {
         margin-left: 58.3333333333%
     }
+
     .row .col.pull-l7 {
         right: 58.3333333333%
     }
+
     .row .col.push-l7 {
         left: 58.3333333333%
     }
+
     .row .col.offset-l8 {
         margin-left: 66.6666666667%
     }
+
     .row .col.pull-l8 {
         right: 66.6666666667%
     }
+
     .row .col.push-l8 {
         left: 66.6666666667%
     }
+
     .row .col.offset-l9 {
         margin-left: 75%
     }
+
     .row .col.pull-l9 {
         right: 75%
     }
+
     .row .col.push-l9 {
         left: 75%
     }
+
     .row .col.offset-l10 {
         margin-left: 83.3333333333%
     }
+
     .row .col.pull-l10 {
         right: 83.3333333333%
     }
+
     .row .col.push-l10 {
         left: 83.3333333333%
     }
+
     .row .col.offset-l11 {
         margin-left: 91.6666666667%
     }
+
     .row .col.pull-l11 {
         right: 91.6666666667%
     }
+
     .row .col.push-l11 {
         left: 91.6666666667%
     }
+
     .row .col.offset-l12 {
         margin-left: 100%
     }
+
     .row .col.pull-l12 {
         right: 100%
     }
+
     .row .col.push-l12 {
         left: 100%
     }
@@ -3909,177 +4026,224 @@ table span.badge {
         left: auto;
         right: auto
     }
+
     .row .col.xl2 {
         width: 16.6666666667%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.xl3 {
         width: 25%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.xl4 {
         width: 33.3333333333%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.xl5 {
         width: 41.6666666667%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.xl6 {
         width: 50%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.xl7 {
         width: 58.3333333333%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.xl8 {
         width: 66.6666666667%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.xl9 {
         width: 75%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.xl10 {
         width: 83.3333333333%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.xl11 {
         width: 91.6666666667%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.xl12 {
         width: 100%;
         margin-left: auto;
         left: auto;
         right: auto
     }
+
     .row .col.offset-xl1 {
         margin-left: 8.3333333333%
     }
+
     .row .col.pull-xl1 {
         right: 8.3333333333%
     }
+
     .row .col.push-xl1 {
         left: 8.3333333333%
     }
+
     .row .col.offset-xl2 {
         margin-left: 16.6666666667%
     }
+
     .row .col.pull-xl2 {
         right: 16.6666666667%
     }
+
     .row .col.push-xl2 {
         left: 16.6666666667%
     }
+
     .row .col.offset-xl3 {
         margin-left: 25%
     }
+
     .row .col.pull-xl3 {
         right: 25%
     }
+
     .row .col.push-xl3 {
         left: 25%
     }
+
     .row .col.offset-xl4 {
         margin-left: 33.3333333333%
     }
+
     .row .col.pull-xl4 {
         right: 33.3333333333%
     }
+
     .row .col.push-xl4 {
         left: 33.3333333333%
     }
+
     .row .col.offset-xl5 {
         margin-left: 41.6666666667%
     }
+
     .row .col.pull-xl5 {
         right: 41.6666666667%
     }
+
     .row .col.push-xl5 {
         left: 41.6666666667%
     }
+
     .row .col.offset-xl6 {
         margin-left: 50%
     }
+
     .row .col.pull-xl6 {
         right: 50%
     }
+
     .row .col.push-xl6 {
         left: 50%
     }
+
     .row .col.offset-xl7 {
         margin-left: 58.3333333333%
     }
+
     .row .col.pull-xl7 {
         right: 58.3333333333%
     }
+
     .row .col.push-xl7 {
         left: 58.3333333333%
     }
+
     .row .col.offset-xl8 {
         margin-left: 66.6666666667%
     }
+
     .row .col.pull-xl8 {
         right: 66.6666666667%
     }
+
     .row .col.push-xl8 {
         left: 66.6666666667%
     }
+
     .row .col.offset-xl9 {
         margin-left: 75%
     }
+
     .row .col.pull-xl9 {
         right: 75%
     }
+
     .row .col.push-xl9 {
         left: 75%
     }
+
     .row .col.offset-xl10 {
         margin-left: 83.3333333333%
     }
+
     .row .col.pull-xl10 {
         right: 83.3333333333%
     }
+
     .row .col.push-xl10 {
         left: 83.3333333333%
     }
+
     .row .col.offset-xl11 {
         margin-left: 91.6666666667%
     }
+
     .row .col.pull-xl11 {
         right: 91.6666666667%
     }
+
     .row .col.push-xl11 {
         left: 91.6666666667%
     }
+
     .row .col.offset-xl12 {
         margin-left: 100%
     }
+
     .row .col.pull-xl12 {
         right: 100%
     }
+
     .row .col.push-xl12 {
         left: 100%
     }
@@ -4165,15 +4329,18 @@ nav .brand-logo.center {
         -webkit-transform: translateX(-50%);
         transform: translateX(-50%)
     }
+
     nav .brand-logo.left,
     nav .brand-logo.right {
         padding: 0;
         -webkit-transform: none;
         transform: none
     }
+
     nav .brand-logo.left {
         left: 0.5rem
     }
+
     nav .brand-logo.right {
         right: 0.5rem;
         left: auto
@@ -4309,6 +4476,7 @@ nav .input-field label.active i {
     nav.nav-extended .nav-wrapper {
         min-height: 64px
     }
+
     nav,
     nav .nav-wrapper i,
     nav a.sidenav-trigger,
@@ -4316,6 +4484,7 @@ nav .input-field label.active i {
         height: 64px;
         line-height: 64px
     }
+
     .navbar-fixed {
         height: 64px
     }
@@ -4981,12 +5150,14 @@ small {
         display: -ms-flexbox;
         display: flex
     }
+
     .tabs .tab {
         -webkit-box-flex: 1;
         -webkit-flex-grow: 1;
         -ms-flex-positive: 1;
         flex-grow: 1
     }
+
     .tabs .tab a {
         padding: 0 12px
     }
@@ -7596,13 +7767,16 @@ input[type=range]::-ms-thumb {
         -webkit-transform: translateX(-105%);
         transform: translateX(-105%)
     }
+
     .sidenav.sidenav-fixed.right-aligned {
         -webkit-transform: translateX(105%);
         transform: translateX(105%)
     }
+
     .sidenav>a {
         padding: 0 16px
     }
+
     .sidenav .user-view {
         padding: 16px 16px 0
     }
@@ -7731,24 +7905,31 @@ input[type=range]::-ms-thumb {
     12.5% {
         -webkit-transform: rotate(135deg)
     }
+
     25% {
         -webkit-transform: rotate(270deg)
     }
+
     37.5% {
         -webkit-transform: rotate(405deg)
     }
+
     50% {
         -webkit-transform: rotate(540deg)
     }
+
     62.5% {
         -webkit-transform: rotate(675deg)
     }
+
     75% {
         -webkit-transform: rotate(810deg)
     }
+
     87.5% {
         -webkit-transform: rotate(945deg)
     }
+
     to {
         -webkit-transform: rotate(1080deg)
     }
@@ -7759,30 +7940,37 @@ input[type=range]::-ms-thumb {
         -webkit-transform: rotate(135deg);
         transform: rotate(135deg)
     }
+
     25% {
         -webkit-transform: rotate(270deg);
         transform: rotate(270deg)
     }
+
     37.5% {
         -webkit-transform: rotate(405deg);
         transform: rotate(405deg)
     }
+
     50% {
         -webkit-transform: rotate(540deg);
         transform: rotate(540deg)
     }
+
     62.5% {
         -webkit-transform: rotate(675deg);
         transform: rotate(675deg)
     }
+
     75% {
         -webkit-transform: rotate(810deg);
         transform: rotate(810deg)
     }
+
     87.5% {
         -webkit-transform: rotate(945deg);
         transform: rotate(945deg)
     }
+
     to {
         -webkit-transform: rotate(1080deg);
         transform: rotate(1080deg)
@@ -7793,18 +7981,23 @@ input[type=range]::-ms-thumb {
     from {
         opacity: 1
     }
+
     25% {
         opacity: 1
     }
+
     26% {
         opacity: 0
     }
+
     89% {
         opacity: 0
     }
+
     90% {
         opacity: 1
     }
+
     100% {
         opacity: 1
     }
@@ -7814,18 +8007,23 @@ input[type=range]::-ms-thumb {
     from {
         opacity: 1
     }
+
     25% {
         opacity: 1
     }
+
     26% {
         opacity: 0
     }
+
     89% {
         opacity: 0
     }
+
     90% {
         opacity: 1
     }
+
     100% {
         opacity: 1
     }
@@ -7835,15 +8033,19 @@ input[type=range]::-ms-thumb {
     from {
         opacity: 0
     }
+
     15% {
         opacity: 0
     }
+
     25% {
         opacity: 1
     }
+
     50% {
         opacity: 1
     }
+
     51% {
         opacity: 0
     }
@@ -7853,15 +8055,19 @@ input[type=range]::-ms-thumb {
     from {
         opacity: 0
     }
+
     15% {
         opacity: 0
     }
+
     25% {
         opacity: 1
     }
+
     50% {
         opacity: 1
     }
+
     51% {
         opacity: 0
     }
@@ -7871,15 +8077,19 @@ input[type=range]::-ms-thumb {
     from {
         opacity: 0
     }
+
     40% {
         opacity: 0
     }
+
     50% {
         opacity: 1
     }
+
     75% {
         opacity: 1
     }
+
     76% {
         opacity: 0
     }
@@ -7889,15 +8099,19 @@ input[type=range]::-ms-thumb {
     from {
         opacity: 0
     }
+
     40% {
         opacity: 0
     }
+
     50% {
         opacity: 1
     }
+
     75% {
         opacity: 1
     }
+
     76% {
         opacity: 0
     }
@@ -7907,15 +8121,19 @@ input[type=range]::-ms-thumb {
     from {
         opacity: 0
     }
+
     65% {
         opacity: 0
     }
+
     75% {
         opacity: 1
     }
+
     90% {
         opacity: 1
     }
+
     100% {
         opacity: 0
     }
@@ -7925,15 +8143,19 @@ input[type=range]::-ms-thumb {
     from {
         opacity: 0
     }
+
     65% {
         opacity: 0
     }
+
     75% {
         opacity: 1
     }
+
     90% {
         opacity: 1
     }
+
     100% {
         opacity: 0
     }
@@ -8007,9 +8229,11 @@ input[type=range]::-ms-thumb {
     from {
         -webkit-transform: rotate(130deg)
     }
+
     50% {
         -webkit-transform: rotate(-5deg)
     }
+
     to {
         -webkit-transform: rotate(130deg)
     }
@@ -8020,10 +8244,12 @@ input[type=range]::-ms-thumb {
         -webkit-transform: rotate(130deg);
         transform: rotate(130deg)
     }
+
     50% {
         -webkit-transform: rotate(-5deg);
         transform: rotate(-5deg)
     }
+
     to {
         -webkit-transform: rotate(130deg);
         transform: rotate(130deg)
@@ -8034,9 +8260,11 @@ input[type=range]::-ms-thumb {
     from {
         -webkit-transform: rotate(-130deg)
     }
+
     50% {
         -webkit-transform: rotate(5deg)
     }
+
     to {
         -webkit-transform: rotate(-130deg)
     }
@@ -8047,10 +8275,12 @@ input[type=range]::-ms-thumb {
         -webkit-transform: rotate(-130deg);
         transform: rotate(-130deg)
     }
+
     50% {
         -webkit-transform: rotate(5deg);
         transform: rotate(5deg)
     }
+
     to {
         -webkit-transform: rotate(-130deg);
         transform: rotate(-130deg)
@@ -8066,6 +8296,7 @@ input[type=range]::-ms-thumb {
     from {
         opacity: 1
     }
+
     to {
         opacity: 0
     }
@@ -8075,6 +8306,7 @@ input[type=range]::-ms-thumb {
     from {
         opacity: 1
     }
+
     to {
         opacity: 0
     }
@@ -8379,6 +8611,7 @@ input[type=range]::-ms-thumb {
 }
 
 @media only screen and (max-width: 600px) {
+
     .tap-target,
     .tap-target-wrapper {
         width: 600px;
@@ -8416,11 +8649,13 @@ input[type=range]::-ms-thumb {
         -webkit-transform: scale(1);
         transform: scale(1)
     }
+
     50% {
         opacity: 0;
         -webkit-transform: scale(1.5);
         transform: scale(1.5)
     }
+
     100% {
         opacity: 0;
         -webkit-transform: scale(1.5);
@@ -8434,11 +8669,13 @@ input[type=range]::-ms-thumb {
         -webkit-transform: scale(1);
         transform: scale(1)
     }
+
     50% {
         opacity: 0;
         -webkit-transform: scale(1.5);
         transform: scale(1.5)
     }
+
     100% {
         opacity: 0;
         -webkit-transform: scale(1.5);
@@ -8637,6 +8874,7 @@ input[type=range]::-ms-thumb {
     .datepicker-modal {
         max-width: 625px
     }
+
     .datepicker-container.modal-content {
         -webkit-box-orient: horizontal;
         -webkit-box-direction: normal;
@@ -8644,17 +8882,20 @@ input[type=range]::-ms-thumb {
         -ms-flex-direction: row;
         flex-direction: row
     }
+
     .datepicker-date-display {
         -webkit-box-flex: 0;
         -webkit-flex: 0 1 270px;
         -ms-flex: 0 1 270px;
         flex: 0 1 270px
     }
+
     .datepicker-controls,
     .datepicker-table,
     .datepicker-footer {
         width: 320px
     }
+
     .datepicker-day-button {
         line-height: 44px
     }
@@ -8856,6 +9097,7 @@ input[type=range]::-ms-thumb {
     .timepicker-modal {
         max-width: 600px
     }
+
     .timepicker-container.modal-content {
         -webkit-box-orient: horizontal;
         -webkit-box-direction: normal;
@@ -8863,9 +9105,11 @@ input[type=range]::-ms-thumb {
         -ms-flex-direction: row;
         flex-direction: row
     }
+
     .timepicker-text-container {
         top: 32%
     }
+
     .timepicker-display-am-pm {
         position: relative;
         right: auto;

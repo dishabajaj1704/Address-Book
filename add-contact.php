@@ -89,8 +89,7 @@
         <?php   
             endif;
         ?>
-
-        </div>
+      
         <div class="row">
             <form class="col s12 formValidate" action="<?=$_SERVER['PHP_SELF'];?>" id="add-contact-form" method="POST"enctype="multipart/form-data">
                 <div class="row mb10">
@@ -106,7 +105,6 @@
                         <label for="last_name">Last Name</label>
                         <div class="last_name_error "></div>
                     </div>
-                </div>
                 <div class="row mb10">
                     <div class="input-field col s6">
                         <input id="email" name="email" type="email" class="validate" data-error=".email_error" value="<?=old($_POST,'email')?>">

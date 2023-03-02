@@ -1,6 +1,41 @@
 <!DOCTYPE html>
 <html>
+<?php
+    require_once('./includes/functions.inc.php');
+    $error=false;
+    if(isset($_POST['action'])){
+        $first_name=sanitize($_POST['first_name']);
+        $last_name=sanitize($_POST['last_name']);
+        $email=sanitize($_POST['email']);
+        $birthdate=date('Y-m-d',strtotime(sanitize($_POST['birthdate'])));
+        $telephone=sanitize($_POST['telephone']);
+        $address=sanitize($_POST['address']);
 
+        if(!$first_name || !$last_name || !$email || !$birthdate || !$telephone || !$address || !isset($_FILES['pic']['name'])){
+            $error=true;
+        }else{
+            //We would validates values,which can directly insert in database!
+            $tmp_file_name=$_FILES['pic']['name'];
+            $tmp_file_path=$_FILES['pic']['tmp_name'];
+            $file_name_as_array=explode(".",$tmp_file_name);
+            $ext=end($file_name_as_array);
+
+            $data['first_name']=$first_name;
+            $data['last_name']=$last_name;
+            $data['birthdate']=$birthdate;
+            $data['telephone']=$telephone;
+            $data['email']=$email;
+            $data['address']=$address;
+            $data['image_name']=$ext;
+
+            $query=prepare_insert_query("contacts",$data);
+            db_query($query);
+            $id=get_last_insert_id();
+            $file_name="$id.$ext";
+            move_uploaded_file($tmp_file_path,"images/users/$file_name");
+        }
+    }
+?>
 <head>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -41,41 +76,26 @@
     <!--/NAVIGATION BAR-->
     <div class="container">
         <div class="row mt50">
-            <h2>Add New Contact</h2>
+            <h2>Edit Your Contact</h2>
         </div>
-        <div class="row">
-            <div class="materialert">
-                <i class="material-icons">check_circle</i> <span>Bienvenido, Linebeck</span>
-                <button type="button" class="close-alert">×</button>
-            </div>
-            <div class="materialert info">
-                <div class="material-icons">info_outline</div>
-                Oh! What a beautiful alert :)
-                <button type="button" class="close-alert">×</button>
-            </div>
+        <?php
+        if($error):
+        ?>
             <div class="materialert error">
                 <div class="material-icons">error_outline</div>
-                Oh! What a beautiful alert :)
+                OOPS!Something missing from your side!Please fill in the complete details!
                 <button type="button" class="close-alert">×</button>
             </div>
-            <div class="materialert success">
-                <div class="material-icons">check</div>
-                Oh! What a beautiful alert :)
-                <button type="button" class="close-alert">×</button>
-            </div>
-            <div class="materialert warning">
-                <div class="material-icons">warning</div>
-                Oh! What a beautiful alert :)
-                <button type="button" class="close-alert">×</button>
-            </div>
-        </div>
+        <?php   
+            endif;
+        ?>
+      
         <div class="row">
-            <form class="col s12 formValidate" action="" id="add-contact-form" method="POST"
-                enctype="multipart/form-data">
+            <form class="col s12 formValidate" action="<?=$_SERVER['PHP_SELF'];?>" id="edit-contact-form" method="GET"enctype="multipart/form-data">
                 <div class="row mb10">
                     <div class="input-field col s6">
                         <input id="first_name" name="first_name" type="text" class="validate"
-                            data-error=".first_name_error">
+                            data-error=".first_name_error" value="<?=old($_POST,'first_name')?>">
                         <label for="first_name">First Name</label>
                         <div class="first_name_error "></div>
                     </div>
@@ -85,10 +105,9 @@
                         <label for="last_name">Last Name</label>
                         <div class="last_name_error "></div>
                     </div>
-                </div>
                 <div class="row mb10">
                     <div class="input-field col s6">
-                        <input id="email" name="email" type="email" class="validate" data-error=".email_error">
+                        <input id="email" name="email" type="email" class="validate" data-error=".email_error" value="<?=old($_POST,'email')?>">
                         <label for="email">Email</label>
                         <div class="email_error "></div>
                     </div>
@@ -127,8 +146,8 @@
                         <div class="pic_error "></div>
                     </div>
                 </div>
-                <button class="btn waves-effect waves-light right" type="submit" name="action">Submit
-                    <i class="material-icons right">send</i>
+                <button class="btn waves-effect waves-light right" type="submit" name="action">Update
+                    <i class="material-icons right"></i>
                 </button>
             </form>
         </div>
