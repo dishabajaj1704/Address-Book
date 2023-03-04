@@ -119,7 +119,7 @@
                     </div>
                     <div class="input-field col s6">
                         <input id="last_name" name="last_name" type="text" class="validate"
-                            data-error=".last_name_error" value="<?=old($_POST,'last_name',$row[0]['last_name'])?>">;
+                            data-error=".last_name_error" value="<?=old($_POST,'last_name',$row[0]['last_name'])?>">
                         <label for="last_name">Last Name</label>
                         <div class="last_name_error "></div>
                     </div>
