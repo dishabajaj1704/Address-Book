@@ -24,9 +24,10 @@ function db_select($select_query){
     if(!$result){
         return false;
     }
-    $rows=array();
+    $rows=array();  //declared row as array
     while($row=mysqli_fetch_assoc($result)){
         $rows[]=$row;  //in php [] khudhi new index banata hai and data dalta hai
+        // print_r($rows);
     }
 
     return $rows;
@@ -43,9 +44,19 @@ function sanitize($value){
     return trim(mysqli_real_escape_string($connection,$value));
 }
 
-function old($collection,$key){
+
+function old($collection,$key,$defaultValue=""){
     //Form mein koi value wrong hai toh right value bhi nikal jarahe the to prevent that..
-    return trim(isset($collection[$key])?$collection[$key]:'');
+    return trim(isset($collection[$key])?$collection[$key]:$defaultValue);
+}
+
+
+function getOldValue($data, $key, $defaultValue = "") {
+    if(isset($data[$key])) {
+        return $data[$key];
+    }
+
+    return $defaultValue;
 }
 
 function prepare_insert_query($table_name,$data){
@@ -54,12 +65,24 @@ function prepare_insert_query($table_name,$data){
     for($i=0;$i<count($values);$i++){
         $values[$i]="'".$values[$i]."'";
     }
-
+    //implode is used for converting array to string
     $columns=implode(", ",array_keys($data));
     $values=implode(", ",$values);
     $query="INSERT INTO $table_name($columns) VALUES($values)";
     return $query;
 }
+
+function prepare_update_query($table_name,$data,$id){
+    $values=array_values($data);
+    $columns=array_keys($data);
+    // print_r("Columns:- ",$columns);
+    // print_r("Values:- ",$values);
+    // print_r($columns);
+     $query = "UPDATE $table_name SET $columns[0] = '$values[0]', $columns[1] = '$values[1]', $columns[2] ='$values[2]', $columns[3] = '$values[3]', $columns[4] = '$values[4]',$columns[5] = '$values[5]' WHERE id = $id"; 
+
+     return $query;
+}
+
 function get_image_name($image_name,$id){
     //If name contains only extension
     return strpos($image_name,'.')?$image_name:"$id.$image_name";
