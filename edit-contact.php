@@ -3,6 +3,23 @@
 <?php
     require_once('./includes/functions.inc.php');
     $error=false;
+  
+    if(!isset($_GET['id'])) {
+        echo "Not possible";
+        die();
+    }
+    $id=$_GET['id'];
+    $query = "SELECT * FROM contacts WHERE id = $id";
+    $row=db_select($query);
+    if($row===false) {
+        $error = db_error();
+        dd($error);
+    } else if(empty($row)) {
+        dd("Wrong ID?");
+    }
+
+    // print_r($row);
+    // echo $row[0]['address'];
     if(isset($_POST['action'])){
         $first_name=sanitize($_POST['first_name']);
         $last_name=sanitize($_POST['last_name']);
@@ -22,14 +39,15 @@
 
             $data['first_name']=$first_name;
             $data['last_name']=$last_name;
+            $data['email']=$email;
             $data['birthdate']=$birthdate;
             $data['telephone']=$telephone;
-            $data['email']=$email;
             $data['address']=$address;
             $data['image_name']=$ext;
 
-            $query=prepare_insert_query("contacts",$data);
-            db_query($query);
+            $query=prepare_update_query("contacts",$data,$id);
+      
+            $result = db_query($query);
             $id=get_last_insert_id();
             $file_name="$id.$ext";
             move_uploaded_file($tmp_file_path,"images/users/$file_name");
@@ -91,29 +109,29 @@
         ?>
       
         <div class="row">
-            <form class="col s12 formValidate" action="<?=$_SERVER['PHP_SELF'];?>" id="edit-contact-form" method="GET"enctype="multipart/form-data">
+            <form class="col s12 formValidate" action="" id="edit-contact-form" method="POST"enctype="multipart/form-data">
                 <div class="row mb10">
                     <div class="input-field col s6">
                         <input id="first_name" name="first_name" type="text" class="validate"
-                            data-error=".first_name_error" value="<?=old($_POST,'first_name')?>">
+                            data-error=".first_name_error" value="<?=old($_POST,'first_name',$row[0]['first_name'])?>">
                         <label for="first_name">First Name</label>
                         <div class="first_name_error "></div>
                     </div>
                     <div class="input-field col s6">
                         <input id="last_name" name="last_name" type="text" class="validate"
-                            data-error=".last_name_error">
+                            data-error=".last_name_error" value="<?=old($_POST,'last_name',$row[0]['last_name'])?>">;
                         <label for="last_name">Last Name</label>
                         <div class="last_name_error "></div>
                     </div>
                 <div class="row mb10">
                     <div class="input-field col s6">
-                        <input id="email" name="email" type="email" class="validate" data-error=".email_error" value="<?=old($_POST,'email')?>">
+                        <input id="email" name="email" type="email" class="validate" data-error=".email_error" value="<?=old($_POST,'email',$row[0]['email'])?>">
                         <label for="email">Email</label>
                         <div class="email_error "></div>
                     </div>
                     <div class="input-field col s6">
                         <input id="birthdate" name="birthdate" type="text" class="datepicker"
-                            data-error=".birthday_error">
+                            data-error=".birthday_error" value="<?=old($_POST,'birthdate',$row[0]['birthdate'])?>">
                         <label for="birthdate">Birthdate</label>
                         <div class="birthday_error "></div>
                     </div>
@@ -121,16 +139,16 @@
                 <div class="row mb10">
                     <div class="input-field col s12">
                         <input id="telephone" name="telephone" type="tel" class="validate"
-                            data-error=".telephone_error">
+                            data-error=".telephone_error" value="<?=old($_POST,'telephone',$row[0]['telephone'])?>">
                         <label for="telephone">Telephone</label>
                         <div class="telephone_error "></div>
                     </div>
                 </div>
                 <div class="row mb10">
                     <div class="input-field col s12">
-                        <textarea id="address" name="address" class="materialize-textarea"
-                            data-error=".address_error"></textarea>
-                        <label for="address">Addess</label>
+                        <textarea id="address" name="address"class="materialize-textarea"
+                            data-error=".address_error"><?=old($_POST,'address',$row[0]['address'])?></textarea>
+                        <label for="address">Address</label>
                         <div class="address_error "></div>
                     </div>
                 </div>
@@ -147,7 +165,7 @@
                     </div>
                 </div>
                 <button class="btn waves-effect waves-light right" type="submit" name="action">Update
-                    <i class="material-icons right"></i>
+                    <i class="material-icons right">send</i>
                 </button>
             </form>
         </div>
