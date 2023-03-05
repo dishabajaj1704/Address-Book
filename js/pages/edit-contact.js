@@ -5,6 +5,18 @@ $(function () {
         yearRange: 25
     });
 
+    $(".file-field").change(function(evt) {
+        let file_input = $(this).children().children('input[type=file]');
+        console.log(file_input[0].files[0]);
+
+        if (file_input && file_input[0].files[0]) {
+            let reader = new FileReader();
+            reader.onload = function(evt) {
+                $("#temp_pic").attr('src', evt.target.result);
+            };
+            reader.readAsDataURL(file_input[0].files[0]);
+        }
+    });
     $("#edit-contact-form").validate({
         rules: {
             first_name: {
@@ -32,7 +44,7 @@ $(function () {
                 minlength: 5
             },
             pic: {
-                required: true
+                required: false
             }
         },
         errorElement: 'div',
