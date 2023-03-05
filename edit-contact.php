@@ -3,24 +3,9 @@
 <?php
     require_once('./includes/functions.inc.php');
     $error=false;
-  
-    if(!isset($_GET['id'])) {
-        echo "Not possible";
-        die();
-    }
-    $id=$_GET['id'];
-    $query = "SELECT * FROM contacts WHERE id = $id";
-    $row=db_select($query);
-    if($row===false) {
-        $error = db_error();
-        dd($error);
-    } else if(empty($row)) {
-        dd("Wrong ID?");
-    }
 
-    // print_r($row);
-    // echo $row[0]['address'];
     if(isset($_POST['action'])){
+        $id=$_POST['id'];
         $first_name=sanitize($_POST['first_name']);
         $last_name=sanitize($_POST['last_name']);
         $email=sanitize($_POST['email']);
@@ -28,14 +13,23 @@
         $telephone=sanitize($_POST['telephone']);
         $address=sanitize($_POST['address']);
 
+        $query="SELECT image_name FROM contacts where id=$id";
+        $row=db_select($query)[0];
+        $old_image_name=$row['image_name'];
+
         if(!$first_name || !$last_name || !$email || !$birthdate || !$telephone || !$address || !isset($_FILES['pic']['name'])){
             $error=true;
         }else{
             //We would validates values,which can directly insert in database!
-            $tmp_file_name=$_FILES['pic']['name'];
-            $tmp_file_path=$_FILES['pic']['tmp_name'];
-            $file_name_as_array=explode(".",$tmp_file_name);
-            $ext=end($file_name_as_array);
+            if(!empty($_FILES['pic']['name'])){
+                $tmp_file_name=$_FILES['pic']['name'];
+                $tmp_file_path=$_FILES['pic']['tmp_name'];
+                
+                $file_name_as_array=explode(".",$tmp_file_name);
+                $ext=end($file_name_as_array);
+                $data['image_name']=$ext;
+            }
+
 
             $data['first_name']=$first_name;
             $data['last_name']=$last_name;
@@ -45,14 +39,37 @@
             $data['address']=$address;
             $data['image_name']=$ext;
 
-            $query=prepare_update_query("contacts",$data,$id);
-      
-            $result = db_query($query);
-            $id=get_last_insert_id();
-            $file_name="$id.$ext";
-            move_uploaded_file($tmp_file_path,"images/users/$file_name");
+            $query=prepare_update_query("contacts",$data,"id =$id");
+            db_query($query);
+
+            if(isset($data['image_name'])){
+
+                //Delete the Old image
+                $old_image_name=get_image_name($old_image_name,$id);
+                unlink("images/users/$old_image_name");
+                $file_name="$id.$ext";
+                move_uploaded_file($tmp_file_path,"images/users/$file_name");
+            }
+            header('Location: index.php?op=edit&status=success');
         }
     }
+ 
+      if(!isset($_GET['id'])) {
+        echo "404 page not found";
+        die();
+    } 
+    $id=$_GET['id'];
+    $query = "SELECT * FROM contacts WHERE id = $id";
+    $row=db_select($query);
+    if($row===false) {
+        $error = db_error();
+        dd($error);
+    } else if(empty($row)) {
+        dd("Wrong ID?");
+    }
+    // print_r($row);
+    // echo $row[0]['address'];
+
 ?>
 <head>
     <!--Import Google Icon Font-->
@@ -109,8 +126,10 @@
         ?>
       
         <div class="row">
-            <form class="col s12 formValidate" action="" id="edit-contact-form" method="POST"enctype="multipart/form-data">
+            <form class="col s12 formValidate" action="<?=$_SERVER['PHP_SELF'];?>" id="edit-contact-form" method="POST"enctype="multipart/form-data">
+                
                 <div class="row mb10">
+                       <input type="hidden" name="id" value="<?=$row[0]['id'];?>">
                     <div class="input-field col s6">
                         <input id="first_name" name="first_name" type="text" class="validate"
                             data-error=".first_name_error" value="<?=old($_POST,'first_name',$row[0]['first_name'])?>">
@@ -153,13 +172,16 @@
                     </div>
                 </div>
                 <div class="row mb10">
-                    <div class="file-field input-field col s12">
+                    <div class="col s2">
+                        <img id="temp_pic" width="100%" src="./images/users/<?=get_image_name($row[0]['image_name'],$row[0]['id']);?>" alt="<?=$row[0]['first_name']." ".$row[0]['last_name'];?>">
+                    </div>
+                    <div class="file-field input-field col s10">
                         <div class="btn">
                             <span>Image</span>
                             <input type="file" name="pic" id="pic" data-error=".pic_error">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text" placeholder="Upload Your Image">
+                            <input class="file-path validate" type="text" placeholder="Upload Your Image " value="<?=$row[0]['image_name']?>">
                         </div>
                         <div class="pic_error "></div>
                     </div>
@@ -185,7 +207,7 @@
     <script src="vendors/jquery-validation/validation.min.js" type="text/javascript"></script>
     <script src="vendors/jquery-validation/additional-methods.min.js" type="text/javascript"></script>
     <!--Include Page Level Scripts-->
-    <script src="js/pages/add-contact.js"></script>
+    <script src="js/pages/edit-contact.js"></script>
     <!--Custom JS-->
     <script src="js/custom.js" type="text/javascript"></script>
 </body>
