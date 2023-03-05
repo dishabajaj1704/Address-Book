@@ -71,20 +71,34 @@ function prepare_insert_query($table_name,$data){
     $query="INSERT INTO $table_name($columns) VALUES($values)";
     return $query;
 }
+// function prepare_update_query($table_name,$data,$where){
+//     $values=array_values($data);
+//     $keys=array_keys($data);
+//     for($i=0;$i<count($keys);$i++){
+//         $keys[$i]=$keys[$i]."='".$values[$i]."'";
+//     }
+    
+//     $params=implode(", ",$keys);
+//      $query = "UPDATE $table_name SET $params where $where";
 
-function prepare_update_query($table_name,$data,$id){
-    $values=array_values($data);
-    $columns=array_keys($data);
-    // print_r("Columns:- ",$columns);
-    // print_r("Values:- ",$values);
-    // print_r($columns);
-     $query = "UPDATE $table_name SET $columns[0] = '$values[0]', $columns[1] = '$values[1]', $columns[2] ='$values[2]', $columns[3] = '$values[3]', $columns[4] = '$values[4]',$columns[5] = '$values[5]' WHERE id = $id"; 
+//      return $query;
+// }
+
+
+function prepare_update_query($table_name,$data,$where){
+    //UPDATE table_name SET col1=value1,col2=value2
+    $params="";
+    foreach($data as $key=>$value){
+        $params.="$key = '$value', ";
+    }
+     $params=rtrim($params,", ");
+     $query = "UPDATE $table_name SET $params WHERE $where";
 
      return $query;
 }
 
 function get_image_name($image_name,$id){
-    //If name contains only extension
+    // If name contains only extension
     return strpos($image_name,'.')?$image_name:"$id.$image_name";
 }
 

@@ -4,11 +4,12 @@ require_once('./includes/functions.inc.php');
 // echo "Connected!"
 // $rows=db_select("SELECT * FROM contacts WHERE first_name like '%P%'");
 //$rows=db_select("SELECT * FROM contacts");
-define('ROWS_PER_PAGE',6);  //define() in PHP is used to define constant
+define('ROWS_PER_PAGE',6);  //define() in PHP is used to define a constant
 // dd($rows);
 
 
 $rows=db_select("SELECT COUNT(*) AS total_count FROM contacts");
+// print_r($rows);
 
 // dd($rows);
 $total_num_of_contacts=$rows[0]['total_count'];
@@ -22,7 +23,7 @@ if($current_page<1 || $current_page>$num_of_pages){
 $offset=($current_page-1)* ROWS_PER_PAGE;
 $rows_per_page=ROWS_PER_PAGE;
 
-$rows=db_select("SELECT * FROM contacts LIMIT $offset,$rows_per_page");
+$rows=db_select("SELECT * FROM contacts LIMIT $offset,$rows_per_page");  //Per page how many rows should be displayed
 if($rows==false){
     dd(db_error());
 }
@@ -105,7 +106,7 @@ if($rows==false){
                         <td><?=$row['birthdate'];?></td>
                         <td><?=$row['telephone'];?></td>
                         <td><?=$row['address'];?></td>
-                        <td><a class="btn btn-floating green lighten-2"><i class="material-icons">edit</i></a></td>
+                        <td><a href="edit-contact.php?id=<?=$row['id'] ?>"class="btn btn-floating green lighten-2" data-id="<?=$row['id']?>"><i class="material-icons">edit</i></a></td>
                         <td><a class="btn btn-floating red lighten-2 modal-trigger" href="#deleteModal"><i class="material-icons">delete_forever</i></a>
                         </td>
                     </tr>
