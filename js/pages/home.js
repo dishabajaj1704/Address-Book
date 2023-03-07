@@ -21,11 +21,16 @@ $(function () {
         M.toast({
             html: 'Contact Added successfully',
             classes: 'green darken-1'
-        });
+        });e
     }
     else if (operation === "edit" && status === "success") {
         M.toast({
             html: 'Contact Updated successfully',
+            classes: 'green darken-1'
+        });
+    } else if (operation === "delete" && status === "success") {
+        M.toast({
+            html: 'Contact Deleted successfully',
             classes: 'green darken-1'
         });
     }
