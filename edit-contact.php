@@ -54,7 +54,7 @@
         }
     }
  
-      if(!isset($_GET['id'])) {
+    if(!isset($_GET['id'])) {
         echo "404 page not found";
         die();
     } 

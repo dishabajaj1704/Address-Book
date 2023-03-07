@@ -33,6 +33,8 @@
             $id=get_last_insert_id();
             $file_name="$id.$ext";
             move_uploaded_file($tmp_file_path,"images/users/$file_name");
+            //heade redirect us to first page
+            header('Location: index.php?op=add&status=success');
         }
     }
 ?>
@@ -130,7 +132,7 @@
                     <div class="input-field col s12">
                         <textarea id="address" name="address" class="materialize-textarea"
                             data-error=".address_error"></textarea>
-                        <label for="address">Addess</label>
+                        <label for="address">Address</label>
                         <div class="address_error "></div>
                     </div>
                 </div>
