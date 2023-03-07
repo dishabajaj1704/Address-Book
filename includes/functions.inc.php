@@ -97,6 +97,12 @@ function prepare_update_query($table_name,$data,$where){
      return $query;
 }
 
+
+function prepare_delete_query($table_name,$where){
+    $query="DELETE FROM $table_name WHERE $where";
+    return $query;
+}
+
 function get_image_name($image_name,$id){
     // If name contains only extension
     return strpos($image_name,'.')?$image_name:"$id.$image_name";
