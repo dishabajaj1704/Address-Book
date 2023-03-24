@@ -106,7 +106,7 @@ if($rows==false){
                         <td><?=$row['birthdate'];?></td>
                         <td><?=$row['telephone'];?></td>
                         <td><?=$row['address'];?></td>
-                        <td><a href="edit-contact.php?id=<?=$row['id'] ?>"class="btn btn-floating green lighten-2" data-id="<?=$row['id']?>"><i class="material-icons">edit</i></a></td>
+                        <td><a href="edit-contact.php?id=<?=$row['id'] ?>"class="btn btn-floating green lighten-2"><i class="material-icons">edit</i></a></td>
                         <td><a class="btn btn-floating red lighten-2 modal-trigger" href="#deleteModal"><i class="material-icons delete-element" data-id="<?=$row['id'];?>">delete_forever</i></a>
                         </td>
                     </tr>
@@ -160,7 +160,7 @@ if($rows==false){
     <footer class="page-footer p0">
         <div class="footer-copyright ">
             <div class="container">
-                <p class="center-align">© 2020 Study Link Classes</p>
+                <p class="center-align">©Disha Bajaj</p>
             </div>
         </div>
     </footer>
@@ -173,7 +173,7 @@ if($rows==false){
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-close btn blue-grey lighten-2 waves-effect">Cancel</a>
-            <a href="#!he" id="deleteModalAgreeBtn"class="modal-close  btn waves-effect red lighten-2">Agree</a>
+            <a href="#!" id="deleteModalAgreeBtn"class="modal-close  btn waves-effect red lighten-2">Agree</a>
         </div>
     </div>
     <!-- /Delete Modal Structure -->
