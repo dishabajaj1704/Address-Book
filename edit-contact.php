@@ -15,6 +15,7 @@
 
         $query="SELECT image_name FROM contacts where id=$id";
         $row=db_select($query)[0];
+        // dd($row);
         $old_image_name=$row['image_name'];
 
         if(!$first_name || !$last_name || !$email || !$birthdate || !$telephone || !$address || !isset($_FILES['pic']['name'])){
@@ -34,10 +35,10 @@
             $data['first_name']=$first_name;
             $data['last_name']=$last_name;
             $data['email']=$email;
-            $data['birthdate']=$birthdate;
+             $data['birthdate'] = date('Y-m-d', strtotime(sanitize($_POST['birthdate'])));
             $data['telephone']=$telephone;
             $data['address']=$address;
-            $data['image_name']=$ext;
+            // $data['image_name']=$ext;
 
             $query=prepare_update_query("contacts",$data,"id =$id");
             db_query($query);
@@ -181,7 +182,7 @@
                             <input type="file" name="pic" id="pic" data-error=".pic_error">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text" placeholder="Upload Your Image " value="<?=$row[0]['image_name']?>">
+                            <input class="file-path validate" type="text" placeholder="Upload Your Image " value="<?=old($_POST,'image_name',$row[0]['image_name'])?>">
                         </div>
                         <div class="pic_error "></div>
                     </div>
@@ -191,6 +192,7 @@
                 </button>
             </form>
         </div>
+    </div>
     </div>
     <footer class="page-footer p0">
         <div class="footer-copyright ">

@@ -10,11 +10,15 @@
         $birthdate=date('Y-m-d',strtotime(sanitize($_POST['birthdate'])));
         $telephone=sanitize($_POST['telephone']);
         $address=sanitize($_POST['address']);
-
-        if(!$first_name || !$last_name || !$email || !$birthdate || !$telephone || !$address || !isset($_FILES['pic']['name'])){
+        // print_r("$_FILES");
+        if(!$first_name || !$last_name || !$email || !$birthdate || !$telephone || !$address || !isset($_FILES['pic']['name'])) {
             $error=true;
         }else{
             //We would validates values,which can directly insert in database!
+
+            //pic is the name of input file = <input type="file" name="pic" id="pic" data-error=".pic_error">
+            // print_r($_FILES['pic']);
+            // ArrayArray ( [name] => 1.jpg [full_path] => 1.jpg [type] => image/jpeg [tmp_name] => C:\xampp\tmp\php6D0B.tmp [error] => 0 [size] => 4726 )
             $tmp_file_name=$_FILES['pic']['name'];
             $tmp_file_path=$_FILES['pic']['tmp_name'];
             $file_name_as_array=explode(".",$tmp_file_name);
@@ -27,7 +31,6 @@
             $data['email']=$email;
             $data['address']=$address;
             $data['image_name']=$ext;
-
             $query=prepare_insert_query("contacts",$data);
             db_query($query);
             $id=get_last_insert_id();
@@ -36,6 +39,7 @@
             //heade redirect us to first page
             header('Location: index.php?op=add&status=success');
         }
+        
     }
 ?>
 <head>
