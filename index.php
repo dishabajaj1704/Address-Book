@@ -17,7 +17,7 @@ $num_of_pages=ceil($total_num_of_contacts/ROWS_PER_PAGE);
 $current_page=isset($_GET['page'])?$_GET['page']:1;
 
 if($current_page<1 || $current_page>$num_of_pages){
-    die("404 NOT FOUND");
+    header('Location: index.php?page=1');
 }
 
 $offset=($current_page-1)* ROWS_PER_PAGE;
@@ -143,6 +143,7 @@ if($rows==false){
                         $nextpage=$current_page+1;
                     }else{
                         $nextpage=1;
+                        
                     }
                      $styles=$current_page==$num_of_pages?"disabled": "waves-effect";
                 ?>
